@@ -21,16 +21,20 @@ func _ready():
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$HUD.show_game_over()
+	get_tree().call_group("mobs", "queue_free")
 
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 
 
 func _on_MobTimer_timeout():
 	# Choose a random location on Path2D.
-	#$MobPath/MobSpawnLocation.offset = randi()
+	$MobPath/MobSpawnLocation.offset = randi()
 	# Create a Mob instance and add it to the scene.
 	var mob = Mob.instance()
 	add_child(mob)
@@ -53,3 +57,4 @@ func _on_StartTimer_timeout():
 
 func _on_ScoreTimer_timeout():
 	score += 1
+	$HUD.update_score(score)

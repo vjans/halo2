@@ -52,5 +52,6 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="InvincibilityFrames" type="Timer" parent="."]
+wait_time = 0.621
 [connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
 [connection signal="timeout" from="InvincibilityFrames" to="." method="_on_InvincibilityFrames_timeout"]

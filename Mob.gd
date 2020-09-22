@@ -1,6 +1,7 @@
 
 extends RigidBody2D
 
+signal mobhit
 
 export var min_speed = 150  # Minimum speed range.
 export var max_speed = 250  # Maximum speed range.
@@ -19,3 +20,8 @@ func _ready():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
+func _on_Mob_body_entered(body):
+	emit_signal("mobhit") # funzt nicht
+	print("mobhit") #funzt nicht
