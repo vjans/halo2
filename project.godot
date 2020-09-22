@@ -16,8 +16,30 @@ _global_script_class_icons={
 [application]
 
 config/name="Helloworld"
-run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://Main.tscn"
+config/icon="res://Sprite/icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/resizable=false
+window/size/borderless=true
+window/stretch/aspect="keep"
+
+[global]
+
+size/height=false
+
+[layer]
+
+size/height=false
+
+[layer_names]
+
+2d_render/layer_1="Walls"
+2d_render/layer_2="Player"
+2d_render/layer_3="Mobs"
 
 [rendering]
 
