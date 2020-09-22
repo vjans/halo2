@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 signal hit
 
 
@@ -8,7 +8,7 @@ var screen_size  # Size of the game window.
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false
+	$Area2D/CollisionShape2D.disabled = false
 	
 	
 func _ready():
@@ -32,18 +32,29 @@ func _process(delta):
 		$AnimatedSprite.stop()
 		
 	position += velocity * delta
+	if velocity.x != 0:
+		$AnimatedSprite.animation = "walk"
+		$AnimatedSprite.flip_v = false
+		# See the note below about boolean assignment
+		$AnimatedSprite.flip_h = velocity.x < 0
+	elif velocity.y == 0 && velocity.x == 0:
+		$AnimatedSprite.animation = "idle"
+		
 	
 	
 	
 
 
-func _on_Player_body_entered(body):
+
+
+func _on_Area2D_body_entered(body):
 	emit_signal("hit")
 	print("hit")
-	$CollisionShape2D.set_deferred("disabled", true) # wenn man getroffen wird ist man kurz unverwundbar -> kollision aus
+	$Area2D/CollisionShape2D.set_deferred("disabled", true) # wenn man getroffen wird ist man kurz unverwundbar -> kollision aus
 	$InvincibilityFrames.start()
 	
-
-
+	
+	
 func _on_InvincibilityFrames_timeout(): # kollision wieder an nach timer -> einfach wait time ändern
-	$CollisionShape2D.set_deferred("disabled", false)
+	$Area2D/CollisionShape2D.set_deferred("disabled", false)
+
