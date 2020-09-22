@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 36.4875, 43.4806, 0, 0, 0, 0, 290.107, 43.4806, 0, 0, 0, 0, 292.109, 136.919, 0, 0, 0, 0, 228.704, 138.254, 0, 0, 0, 0, 227.37, 233.028, 0, 0, 0, 0, 35.1527, 233.028, 0, 0, 0, 0, 34.4853, 140.256 )
+"points": PoolVector2Array( 0, 0, 0, 0, 292.109, 136.919, 0, 0, 0, 0, 228.704, 138.254, 0, 0, 0, 0, 227.37, 233.028, 0, 0, 0, 0, 35.1527, 233.028, 0, 0, 0, 0, 34.4853, 140.256, 0, 0, 0, 0, 36.4875, 43.4806 )
 }
 
 [node name="Main" type="Node"]
@@ -15,7 +15,7 @@ script = ExtResource( 3 )
 Mob = ExtResource( 4 )
 
 [node name="World" parent="." instance=ExtResource( 2 )]
-position = Vector2( 4.48987, 10.6634 )
+position = Vector2( 0.485353, -0.015296 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -32,10 +32,12 @@ one_shot = true
 position = Vector2( 356.16, 104.007 )
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2( -0.220722, -14.0589 )
+scale = Vector2( 0.987047, 1.03169 )
 curve = SubResource( 1 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2( 36.4875, 43.4806 )
+position = Vector2( 36.4875, 42.8132 )
 rotation = 1.94205e-06
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

@@ -30,6 +30,8 @@ animations = [ {
 extents = Vector2( 16.8291, 15.9593 )
 
 [node name="Mob" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 5
 gravity_scale = 0.0
 script = ExtResource( 2 )
 
